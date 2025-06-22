@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal Blog Platform - Write, edit, and share your thoughts">
+    <title>Blog Platform | Write & Share</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/blog.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <h1 class="logo">BlogSpace</h1>
+            <ul class="nav-links">
+                <li><a href="index.html">Todo</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="blog-container">
+            <div class="blog-header">
+                <h2>My Blog</h2>
+                <p class="subtitle">Share your thoughts with the world</p>
+                <button id="newPostBtn" class="btn btn-primary">
+                    <i class="fas fa-pen"></i> New Post
+                </button>
+            </div>
+
+            <aside class="blog-sidebar">
+                <div class="search-section">
+                    <div class="search-box">
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            placeholder="Search posts..." 
+                            aria-label="Search blog posts"
+                        >
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+
+                <div class="blog-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="totalPosts">0</span>
+                        <span class="stat-label">Posts</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="totalWords">0</span>
+                        <span class="stat-label">Words</span>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="blog-content">
+                <!-- Posts List View -->
+                <div id="listView">
+                    <div id="posts-container">
+                        <div class="row" id="posts-list">
+                            <!-- Blog post cards will be rendered here -->
+                        </div>
+                        <div id="empty-state" class="empty-state">
+                            <i class="fas fa-clipboard-list"></i>
+                            <h3>No posts yet</h3>
+                            <p>Create your first post to get started!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post Form View -->
+                <div id="formView" style="display:none;">
+                    <div id="post-form-container" class="post-form-container">
+                        <form id="blogForm" class="blog-form">
+                            <h3 id="form-title">Create New Post</h3>
+                            <input type="hidden" id="edit-post-id">
+                            <div class="form-group">
+                                <input 
+                                    type="text" 
+                                    id="postTitle" 
+                                    placeholder="Enter post title..." 
+                                    required
+                                    aria-label="Post title"
+                                >
+                            </div>
+                            <div class="form-group">
+                                <input 
+                                    type="text" 
+                                    id="postTags" 
+                                    placeholder="Tags (comma-separated)" 
+                                    aria-label="Post tags"
+                                >
+                            </div>
+                            <div class="form-group">
+                                <textarea 
+                                    id="postContent" 
+                                    placeholder="Write your post content here..." 
+                                    required
+                                    aria-label="Post content"
+                                    rows="10"
+                                ></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Save Post
+                                </button>
+                                <button type="button" id="cancel-btn" class="btn btn-secondary">
+                                    <i class="fas fa-times"></i> Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Single Post View -->
+                <div id="postView" style="display:none;">
+                    <div id="postViewContainer"></div>
+                </div>
+
+                <!-- Full Post View Modal -->
+                <div id="post-modal" class="modal hidden">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 id="modal-title"></h2>
+                            <button id="close-modal" class="close-btn">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="modal-meta">
+                            <span id="modal-date"></span>
+                            <div id="modal-tags"></div>
+                        </div>
+                        <div class="modal-body">
+                            <div id="modal-content"></div>
+                        </div>
+                        <div class="modal-actions">
+                            <button id="edit-modal-btn" class="btn btn-primary">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button id="delete-modal-btn" class="btn btn-danger">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Frontend Assignment. Built with ❤️</p>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/blog.js"></script>
+</body>
+</html>
